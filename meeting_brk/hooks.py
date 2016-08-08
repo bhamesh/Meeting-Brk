@@ -68,11 +68,12 @@ app_license = "GPL v3"
 
 # Document Events
 # ---------------
-# # Hook on document methods and events
-# doc_events = {
-# 	"User": {
-# 		"after_insert": "meeting_brk.api.make_orientation_meeting"
-# 	}
+# Hook on document methods and events
+doc_events = {
+	"User": {
+		"after_insert": "meeting_brk.api.make_orientation_meeting"
+		}
+	}
 # doc_events = {
 # 	"*": {
 # 		"on_update": "method",

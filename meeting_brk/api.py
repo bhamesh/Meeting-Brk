@@ -50,7 +50,7 @@ def make_orientation_meeting(doc, method):
 		"title": "Orientation for {0}".format(doc.first_name),
 		"date": add_days(nowdate(), 1),
 		"from_time": "09:00",
-		"to_time": "09:30",
+		"to_time": "11.00",
 		"status": "Planned",
 		"attendees": [{
 			"attendee": doc.name
