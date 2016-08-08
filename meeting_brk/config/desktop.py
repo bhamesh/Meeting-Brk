@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from frappe import _
 
 def get_data():
-	rreturn [
+	return [
 		{
 			"label": _("Tools"),
 			"icon": "octicon octicon-briefcase",
@@ -12,7 +12,7 @@ def get_data():
 					"type": "doctype",
 					"name": "Meeting Brk",
 					"label": _("Meeting Brk"),
-					"description": _("Prepare agenda, send mail and record minutes"),
+					"description": _("Prepare agenda, send email to user and record minutes of meeting"),
 				},
 			]
 		}

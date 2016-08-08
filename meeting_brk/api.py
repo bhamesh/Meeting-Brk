@@ -37,7 +37,7 @@ def get_meeting(start, end):
 		title,
 		status,
 		0 as all_day	
-	from 'tabmeeting_brk'
+	from 'tabMeeting Brk'
 	where 'date' between %(start)s and %(end)s""",{
 		"start": start,
 		"end": end
