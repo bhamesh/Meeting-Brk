@@ -1,5 +1,5 @@
 import frappe	
-import frappe import _
+from frappe import _
 from frappe.utils import nowdate, add_days
 
 @frappe.whitelist()
@@ -25,20 +25,20 @@ def send_invitation_email(meeting):
 	else:
 		frappe.msgprint(_("Meeting status must be 'planned'"))
 
-@frappe.whitelist(
+@frappe.whitelist()
 def get_meeting(start, end):
 	if not frappe.has_permission("Meeting Brk", "read"):
 		raise frappe.PermissionError
 
 	return frappe.db.sql("""select 
-		timestamp('date',from_time) as start,
-		timestamp('date',to_time ) as end,
+		timestamp(`date`, from_time) as start,
+		timestamp(`date`, to_time ) as end,
 		name,
 		title,
 		status,
 		0 as all_day	
-	from 'tabMeeting Brk'
-	where 'date' between %(start)s and %(end)s""",{
+	from `tabMeeting Brk`
+	where `date` between %(start)s and %(end)s""",{
 		"start": start,
 		"end": end
 	}, as_dict=True)

@@ -4,15 +4,15 @@ from frappe import _
 
 def get_data():
 	return [
-		{
+		{	
 			"label": _("Tools"),
 			"icon": "octicon octicon-briefcase",
-			"items": [
+			"item":[
 				{
 					"type": "doctype",
 					"name": "Meeting Brk",
 					"label": _("Meeting Brk"),
-					"description": _("Prepare agenda, send email to user and record minutes of meeting"),
+					"description": _("Prepare agenda, send mail and record minutes"),
 				},
 			]
 		}
