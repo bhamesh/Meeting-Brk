@@ -27,11 +27,13 @@ class TestMeetingBrk(unittest.TestCase):
 		})
 		meeting.insert()
 
-		todo = frappe.get_all("ToDo", filter = {
-			"reference_type":meeting.doctype,
-			"reference_name":meeting.name,
-			"owner":"bhams91.kore@gmail.com"
-		})
+		todo = frappe.get_all("ToDo", 
+			filter = {
+				"reference_type":meeting.doctype,
+				"reference_name":meeting.name,
+				"owner":"bhams91.kore@gmail.com"
+		},
+		fields=["name","description"])
 
 		self.assertEqual(todo[0].name, meeting.minutes[0].todo)
 		self.assertEqual(todo[0].description,
