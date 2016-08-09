@@ -72,8 +72,15 @@ app_license = "GPL v3"
 doc_events = {
 	"User": {
 		"after_insert": "meeting_brk.api.make_orientation_meeting"
-		}
+	},
+	"ToDo":{
+		"on_update": "meeting_brk.api.update_minute_status",
+		"on_trash": "meeting_brk.api.update_minute_status"
 	}
+}
+
+
+
 # doc_events = {
 # 	"*": {
 # 		"on_update": "method",
