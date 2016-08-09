@@ -6,9 +6,15 @@ from __future__ import unicode_literals
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.website.website_generator import WebsiteGenerator
 
 class MeetingBrk(Document):
+
+		website = frappe._dict(
+		template = "templates/generators/meeting_brk.html"
+	)
 	def validate(self):
+		self.page_name = self.name.lower()
 		self.validate_attendees()
 	
 	def on_update(self):	
@@ -22,16 +28,14 @@ class MeetingBrk(Document):
 			if not attendee.full_name:
 				attendee.full_name = get_full_name(attendee.attendee)
 
-				if attendee.attendee in found:
-					frappe.throw(__future__("Attendee {0} entered more than once").format(attendee.attendee))
-					
-				found.append(attendee.attendee)
+			if attendee.attendee in found:
+				frappe.throw(_("Attendee {0} entered twice").format(attendee.attendee))
 
-	
+			found.append(attendee.attendee)
 
 
 	def sync_todos(self):
-		"""Sync ToDos for assignment"""
+		"""Sync ToDos for assignments"""
 		todos_added = [todo.name for todo in
 			frappe.get_all("ToDo",
 				filters={
@@ -52,20 +56,24 @@ class MeetingBrk(Document):
 						"owner": minute.assigned_to
 					})
 					todo.insert()
-					minute.db_set("todo", todo.name, update_modified = False)
+
+					minute.db_set("todo", todo.name, update_modified=False)
 
 				else:
 					todos_added.remove(minute.todo)
+
 			else:
-				minute.db_set("todo", None, update_modified = False)
-
+				minute.db_set("todo", None, update_modified=False)
+				
 		for todo in todos_added:
-			# remove old and closed todos
-
-			frappe.get_doc("ToDo", todo)
+			# remove closed or old todos
+			todo = frappe.get_doc("ToDo", todo)
 			todo.flags.from_meeting = True
 			todo.delete()
-			frappe.delete_todo("ToDo", todo)			
+
+	def get_context(self, context):
+		context.parents = [{"name": "meetings", "title": "Meetings"}]
+			
 
 @frappe.whitelist()
 def get_full_name(attendee):
