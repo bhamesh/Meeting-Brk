@@ -2,24 +2,20 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Meeting Brk', {
-	refresh: function(frm) {
-
-	},
-	send_email:function(frm)
-	{
-		if (frm.doc.status == "Planned") {
+	send_email:function(frm){
+		if (frm.doc.status === "Planned") {
 			frappe.call({
-				method: "meeting_brk.api.send_invitation_email",
+				method: "meeting.api.send_invitation_emails",
 				args: {
-					"meeting": frm.doc.name
-				},
-				callback: function(r)
-				{
-
+					meeting: frm.doc.name
 				}
 			});
 		}
 	},
+});
+
+
+frappe.ui.form.on("Meeting Attendee", {
 	attendee:function (frm,cdt,cdn) {
 		var attendee=frappe.model.get_doc(cdt,cdn);
 		if(attendee.attendee)
