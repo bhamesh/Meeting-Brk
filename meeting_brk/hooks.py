@@ -40,6 +40,9 @@ app_license = "GPL v3"
 # ----------
 
 # automatically create page for each record of this doctype
+
+
+website_generators = ["Meeting Brk"]
 # website_generators = ["Web Page"]
 
 # Installation

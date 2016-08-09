@@ -10,9 +10,10 @@ from frappe.website.website_generator import WebsiteGenerator
 
 class MeetingBrk(Document):
 
-		website = frappe._dict(
+	website = frappe._dict(
 		template = "templates/generators/meeting_brk.html"
 	)
+
 	def validate(self):
 		self.page_name = self.name.lower()
 		self.validate_attendees()
@@ -64,7 +65,7 @@ class MeetingBrk(Document):
 
 			else:
 				minute.db_set("todo", None, update_modified=False)
-				
+
 		for todo in todos_added:
 			# remove closed or old todos
 			todo = frappe.get_doc("ToDo", todo)
@@ -72,7 +73,7 @@ class MeetingBrk(Document):
 			todo.delete()
 
 	def get_context(self, context):
-		context.parents = [{"name": "meetings", "title": "Meetings"}]
+		context.parents = [{"name": "meetings_brk", "title": "Meetings Brk"}]
 			
 
 @frappe.whitelist()
