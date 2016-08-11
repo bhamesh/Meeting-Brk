@@ -1,0 +1,11 @@
+[
+ {
+  "docstatus": 0, 
+  "doctype": "Custom Script", 
+  "dt": "Sales Invoice", 
+  "modified": "2016-08-11 13:39:54.919288", 
+  "name": "Sales Invoice-Client", 
+  "script": "frappe.ui.form.on(\"Sales Invoice\", {\n\tvalidate: function(frm) {\n\t\tvar mobile_no = frm.doc.mobile_no;\n\t\tif (mobile_no.length != 10 || mobile_no == \"\") {\n\t\t\tfrappe.msgprint(\"Mobile Number Invalid\");\n\t\t}\n\t},\n});\n", 
+  "script_type": "Client"
+ }
+]

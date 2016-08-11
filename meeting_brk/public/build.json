@@ -1,0 +1,5 @@
+{
+	"js/weddit.min.js": [
+		"public/js/weddit.js"
+	]
+}

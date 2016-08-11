@@ -11,12 +11,13 @@ app_color = "yellow"
 app_email = "bhams91.kore@gmail.com"
 app_license = "GPL v3"
 
+fixtures = ["Custom Script", "Custom Field"]
 # Includes in <head>
 # ------------------
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/meeting_brk/css/meeting_brk.css"
-# app_include_js = "/assets/meeting_brk/js/meeting_brk.js"
+app_include_js = "/assets/js/weddit.min.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/meeting_brk/css/meeting_brk.css"

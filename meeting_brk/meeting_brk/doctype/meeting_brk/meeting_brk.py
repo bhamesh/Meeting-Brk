@@ -12,6 +12,14 @@ class MeetingBrk(WebsiteGenerator):
 	website = frappe._dict(
 		template = "templates/generators/meeting_brk.html"
 	)
+	# def __init__(self, *args, **kwargs):
+	# 	self.route = None
+	# 	super(WebsiteGenerator, self).__init__(*args, **kwargs)
+
+	# def autoname(self):
+	# 	if not self.name and self.meta.autoname != "hash":
+	# 		self.name = self.scrub(self.get(self.website.page_title_field or "title"))
+
 
 	def validate(self):
 		self.page_name = self.name.lower()
