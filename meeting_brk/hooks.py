@@ -31,7 +31,7 @@ app_include_js = "/assets/js/weddit.min.js"
 
 # website user home page (by Role)
 # role_home_page = {
-#	"Role": "home_page"
+#	"Meeting Mamager": "profile_page",
 # }
 
 # Website user home page (by function)
@@ -42,8 +42,7 @@ app_include_js = "/assets/js/weddit.min.js"
 
 # automatically create page for each record of this doctype
 
-
-website_generators = ["Meeting Brk"]
+website_generators = ["Weddit"]
 # website_generators = ["Web Page"]
 
 # Installation
